@@ -18,8 +18,9 @@ class BMICalculator extends StatelessWidget {
   }
 }
 const bottomContainerHeight = 80.0;
-Color colour = Color(0xFF1D1E33);
-Color footerColour = Color(0xFFEB1555);
+const bottomColour = Color(0xFFEB1555);
+const activeColour = Color(0xFF1D1E33);
+const inactiveColour = Color(0xFF111328);
 
 class InputPage extends StatefulWidget {
   @override
@@ -27,6 +28,30 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Color maleCardColour = inactiveColour;
+  Color femaleCardColour = inactiveColour;
+
+  //1 = male, 2 = female
+  void updateColour(int gender){
+    if (gender == 1){
+      if(maleCardColour == inactiveColour){
+        maleCardColour == activeColour;
+      }
+      else {
+        maleCardColour = inactiveColour;
+      }
+    }
+    if (gender == 2){
+      if(femaleCardColour == inactiveColour){
+        femaleCardColour == activeColour;
+      }
+      else {
+        femaleCardColour = inactiveColour;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +93,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Container(
-              color: footerColour,
+              color: bottomColour,
               margin: EdgeInsets.only(top: 10.0),
               width: double.infinity,
               height: bottomContainerHeight,
